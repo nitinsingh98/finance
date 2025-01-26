@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block main %}
+
+
+<table class="table table-striped">
+    <thead>
+        <th>S.no</th>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Shares</th>
+        <th></th>
+    </thead>
+    {% for item in items %}
+    <tr>
+        <td>
+            {{loop.index}}
+        </td>
+        <td>{{item.symbol}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.shares}}</td>
+        <td>
+            <form action="{{url_for('sell')}}" method="POST">
+                <input autocomplete="off" min="1" max="{{item.shares}}" name="shares" placeholder="Shares"
+                    type="number" value="1" style="width: 70px;">
+                <button type="submit" value="{{item.id}}" name="sold" class="btn btn-sm btn-secondary"
+                    style="background-color: blue;"> Sell</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+{% endblock main %}
