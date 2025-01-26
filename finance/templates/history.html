@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <th>S.no</th>
+        <th>User</th>
+        <th>Stock</th>
+        <th>Shares</th>
+        <th>Type</th>
+        <th>Date</th>
+    </thead>
+    {% for trans in trx %}
+    <tr>
+        <td>{{loop.index}}</td>
+    <td>{{user.username}}</td>
+    <td>{{trans.stock}}</td>
+    <td>{{trans.shares}}</td>
+    <td>{{trans.tot}}</td>
+    <td>{{trans.time}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+
+{% endblock main %}
+
+
